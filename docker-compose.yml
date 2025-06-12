@@ -1,0 +1,48 @@
+services:
+  php:
+      build:
+        context: ./ 
+        dockerfile: Dockerfile 
+      container_name: container_php 
+      restart: always 
+      volumes:
+        - ./src:/var/www/html:cached  
+      ports:
+        - "80:80" 
+      networks:
+        - app-network 
+    
+  mysql:
+    image: mysql:5.7
+    container_name: container_mysql
+    restart: always 
+    volumes:
+      - ./mysql:/var/lib/mysql 
+      - ./sql:sql:/docker-entrypoint-initdb.d 
+    ports:
+      - "3306:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: postgres123 
+      MYSQL_DATABASE: aval_acao_crud 
+      MYSQL_USER: postdba
+      MYSQL_PASSWORD: postgres123
+    networks:
+      - app-network 
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin/latest
+    container_name: container_phpmyadmin
+    restart: always 
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: postgres123
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - app-network 
+
+networks:
+  app-network:
+    driver: brigde
