@@ -13,18 +13,16 @@ services:
       - app-network 
     
   db:
-    image: postgres
+    image: postgres:12
     container_name: container_postgres
     restart: always 
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432" 
     environment:
-      MYSQL_ROOT_PASSWORD: postgres123 
-      MYSQL_DATABASE: aval_acao_crud 
-      MYSQL_USER: postdba
-      MYSQL_PASSWORD: postgres123
+      POSTGRES_PASSWORD: postgres123 
+      POSTGRES_USER: postgres
     networks:
       - app-network 
 
