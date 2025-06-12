@@ -1,16 +1,16 @@
 services:
   php:
-      build:
-        context: ./ 
-        dockerfile: Dockerfile 
-      container_name: container_php 
-      restart: always 
-      volumes:
-        - ./src:/var/www/html:cached  
-      ports:
-        - "80:80" 
-      networks:
-        - app-network 
+    build:
+      context: ./ 
+      dockerfile: Dockerfile 
+    container_name: container_php 
+    restart: always 
+    volumes:
+      - ./src:/var/www/html:cached  
+    ports:
+      - "80:80" 
+    networks:
+      - app-network 
     
   mysql:
     image: mysql:5.7
