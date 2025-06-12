@@ -30,7 +30,7 @@ services:
       - app-network 
   
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin/latest
+    image: phpmyadmin/phpmyadmin:latest
     container_name: container_phpmyadmin
     restart: always 
     environment:
