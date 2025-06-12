@@ -21,9 +21,9 @@ services:
     ports:
       - "5432:5432" 
     environment:
-      POSTGRES_PASSWORD: postgres123 
+      POSTGRES_PASSWORD: postgres123
       POSTGRES_USER: postgres
-      POSTGRES_DB: startup_db
+      POSTGRES_DB: aval_acao_crud
     networks:
       - app-network 
 
