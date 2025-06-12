@@ -12,7 +12,7 @@ services:
     networks:
       - app-network 
     
-  postgres:
+  db:
     image: postgres:12
     container_name: container_postgres
     restart: always 
