@@ -20,7 +20,7 @@ services:
       - ./mysql:/var/lib/mysql 
       - ./sql.sql:/docker-entrypoint-initdb.d 
     ports:
-      - "5432:5432" 
+      - "3306:3306" 
     environment:
       MYSQL_ROOT_PASSWORD: postgres123 
       MYSQL_DATABASE: aval_acao_crud 
