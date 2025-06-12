@@ -12,33 +12,19 @@ services:
     networks:
       - app-network 
     
-  mysql:
-    image: mysql:5.7
-    container_name: container_mysql
+  db:
+    image: postgres
+    container_name: container_postgres
     restart: always 
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
-      - "3306:3306" 
+      - "5432:5432" 
     environment:
       MYSQL_ROOT_PASSWORD: postgres123 
       MYSQL_DATABASE: aval_acao_crud 
       MYSQL_USER: postdba
       MYSQL_PASSWORD: postgres123
-    networks:
-      - app-network 
-  
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: container_phpmyadmin
-    restart: always 
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: postgres123
-    ports:
-      - "8080:80"
-    depends_on:
-      - mysql
     networks:
       - app-network 
 
