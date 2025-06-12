@@ -18,7 +18,7 @@ services:
     restart: always 
     volumes:
       - ./mysql:/var/lib/mysql 
-      - ./mysql:/docker-entrypoint-initdb.d 
+      - ./bd:/docker-entrypoint-initdb.d 
     ports:
       - "5432:5432" 
     environment:
